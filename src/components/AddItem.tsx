@@ -9,37 +9,37 @@ import {
     Button,
     Text,
     useDisclosure,
-  } from '@chakra-ui/react'
+  
+} from '@chakra-ui/react'
+import AddItemForm from './AddItemForm'
+
 
 function AddItem() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const saveInput = () => {
-        console.log('ayy');
-    }
+    // const onSubmit = (data : {id: string, name: string, quantity: number, price:number }) => (
+    //     console.log(data)
+    // )
 
     return (
-      <>
-        <Button w={'100%'} borderRadius={0} onClick={onOpen}><Text>+ Add Item</Text></Button>
-  
-        <Modal isCentered isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              Yoyoyo
-            </ModalBody>
-  
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={saveInput}>
-                Add Item
-              </Button>
-              <Button variant='ghost' onClick={onClose}>Cancel</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
+        <>
+            <Button colorScheme='green' w={'100%'} borderRadius={0} onClick={onOpen}><Text>+ Add Item</Text></Button>
+
+            <Modal isCentered isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>📦 Add Warehouse Item</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                    <AddItemForm/>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </>
     )
 }
 

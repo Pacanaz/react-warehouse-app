@@ -7,6 +7,7 @@ import {
   Td,
   TableContainer,
   IconButton,
+  Tag,
 } from "@chakra-ui/react"
 import { HamburgerIcon } from '@chakra-ui/icons'
 
@@ -17,17 +18,17 @@ function ItemPage() {
     <TableContainer borderRadius={'1em'}>
       <Table size='md'>
         <Thead>
-          <TableHeader position={'thead'}/>
+          <TableHeader />
         </Thead>
         <Tbody>
           <Tr>
             <Td>Apple Green</Td>
             <Td>5</Td>
             <Td>25.4</Td>
-            <Td>Green</Td>
-            <Td>
+            <Td><Tag variant='solid' colorScheme='teal'>Green</Tag></Td>
+            <Td textAlign={'center'}>
               <IconButton
-                colorScheme='blue'
+                backgroundColor={'transparent'}
                 aria-label='Actions'
                 icon={<HamburgerIcon />}
               />

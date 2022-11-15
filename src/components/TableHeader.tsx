@@ -4,14 +4,10 @@ import {
   } from "@chakra-ui/react"
 
 
-interface TableHeaderProps {
-    position?: string
-}
 
-
-const TableHeader = ({ position } : TableHeaderProps): JSX.Element => {
+const TableHeader = () => {
  
-    if (position === 'thead'){
+   
         return ( 
             <>
             <Th>Product name</Th>
@@ -21,20 +17,8 @@ const TableHeader = ({ position } : TableHeaderProps): JSX.Element => {
             <Th>Actions</Th>
           </>
             )
-    }else{
-        return ( 
-            <>
-            <Td>Product name</Td>
-            <Td>Qty In Stock</Td>
-            <Td>Price</Td>
-            <Td>Tags</Td>
-            <Td>Actions</Td>
-          </>
-            )
-    }
+    
 
-      
-   
 };
 
 export default TableHeader
