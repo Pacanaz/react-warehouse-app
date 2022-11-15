@@ -1,38 +1,34 @@
-import * as React from "react"
+import ItemPage from "./components/ItemPage"
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
+  Flex,
+  Heading,
   theme,
+  Spacer,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Input,
+  FormHelperText,
 } from "@chakra-ui/react"
+import { useForm } from "react-hook-form"
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
+    <Flex textAlign="center" fontSize="xl" flexDirection='column' alignItems={'center'}>
         <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+          <Heading mt={'5%'}>
+            Warehouse App
+          </Heading>
+  <Spacer mb={'20vh'}></Spacer>
+         <ItemPage />
+         <FormControl>
+  <FormLabel>Email address</FormLabel>
+  <Input type='email' />
+  <FormHelperText>We'll never share your email.</FormHelperText>
+</FormControl>
+      
+    </Flex>
   </ChakraProvider>
 )
