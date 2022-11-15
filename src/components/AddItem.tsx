@@ -23,7 +23,7 @@ function AddItem() {
 
     return (
         <>
-            <Button colorScheme='green' w={'100%'} borderRadius={0} onClick={onOpen}><Text>+ Add Item</Text></Button>
+            <Button size={'sm'} alignSelf={'flex-start'} ml={'10px'} colorScheme='green' borderRadius={'0.4em'} onClick={onOpen}><Text fontSize={'xs'}>+ Add Item</Text></Button>
 
             <Modal isCentered isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />

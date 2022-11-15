@@ -10,7 +10,7 @@ import { ColorModeSwitcher } from "./ColorModeSwitcher"
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Flex textAlign="center" fontSize="xl" flexDirection='column' alignItems={'center'}>
+    <Flex  fontSize="xl" flexDirection='column' alignItems={'center'}>
       <ColorModeSwitcher justifySelf="flex-end" />
       <Heading mt={'5%'}>
         📦 Warehouse App
