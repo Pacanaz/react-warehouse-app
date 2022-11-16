@@ -1,6 +1,5 @@
 import {
     Th,
-    Td
   } from "@chakra-ui/react"
 
 
