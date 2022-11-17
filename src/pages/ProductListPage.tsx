@@ -11,21 +11,21 @@ import { AddIcon } from '@chakra-ui/icons'
 import TableHeader from "../components/TableHeader"
 import { Link } from "react-router-dom"
 import ProductItem from "../components/ProductItem"
-function ProductPage() {
+function ProductListPage() {
   return (
     <>
-  
+
       <TableContainer borderRadius={'1em'}>
-      <Link to={'create'}><Button size={'sm'} ml={'1em'} alignSelf={'flex-start'} leftIcon={<AddIcon/>} colorScheme='teal' variant='solid'>
-    Add product
-  </Button>
-  </Link>
+        <Link to={'create'}><Button size={'sm'} ml={'1em'} alignSelf={'flex-start'} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
+          Add product
+        </Button>
+        </Link>
         <Table size='md' colorScheme={'green'}>
           <Thead>
             <TableHeader />
           </Thead>
           <Tbody fontSize={'md'}>
-            <ProductItem/>
+            <ProductItem />
           </Tbody>
           <Tfoot>
             <TableHeader />
@@ -37,4 +37,4 @@ function ProductPage() {
   )
 }
 
-export default ProductPage
+export default ProductListPage

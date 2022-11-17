@@ -1,13 +1,17 @@
 import { Button, FormControl, Input } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
-import { Form, Link, useNavigate } from "react-router-dom"
-import {v4 as uuidv4} from 'uuid'
+import { Form, Link, useNavigate, useParams } from "react-router-dom"
 import { useProductData } from "../context/ProductContext"
 
 
   
-function NewProductForm() {
-  const {addProduct} = useProductData();
+function EditProductForm() {
+  const {getProduct, editProduct} = useProductData();
+
+  let { id } = useParams();
+
+      const currentProduct = getProduct(id);
+
     const navigate = useNavigate();
 
     const {
@@ -18,20 +22,35 @@ function NewProductForm() {
 
       function onSubmit(product: any) {
 
-        product.id=uuidv4()
-        
-        product.history = { 
-          priceHistory: [],
-          quantityHistory: [],
+        const currDate = new Date().toLocaleString();
+
+        product.id = id;
+        currentProduct.productName !== product.productName && (currentProduct.productName = product.productName)
+       
+        if(currentProduct.price !== product.price){
+          currentProduct.history.priceHistory.push({
+            createdAt: currDate,
+            price: product.price,
+          })
+          currentProduct.price = product.price 
         }
 
-
-        addProduct(product);
+        if(currentProduct.quantity !== product.quantity){
+          currentProduct.history.quantityHistory.push({
+            createdAt: currDate,
+            quantity: product.quantity,
+          })
+          currentProduct.quantity = product.quantity 
+         
+        }
     
+        editProduct(currentProduct)
         // Some sort of alert that item is added
 
         navigate('/products')
       }
+
+    
       
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -42,7 +61,7 @@ function NewProductForm() {
               {...register('productName', {
                 required: 'This is required',
                 minLength: { value: 4, message: 'Minimum length should be 4' },
-              })}
+              } )} defaultValue={currentProduct.productName}
             />
             <Input mb={'10px'}
               id='quantity'
@@ -51,7 +70,7 @@ function NewProductForm() {
               min="0"
               {...register('quantity', {
                 required: 'This is required',
-              })}
+              })} defaultValue={currentProduct.quantity}
             />
             <Input mb={'10px'}
               id='price'
@@ -61,7 +80,7 @@ function NewProductForm() {
               min="0"
               {...register('price', {
                 required: 'This is required',
-              })}
+              })} defaultValue={currentProduct.price}
             />
           </FormControl>
           <Button mt={4} colorScheme='teal' isLoading={isSubmitting} type='submit'>
@@ -73,5 +92,5 @@ function NewProductForm() {
         </Form>
       )
             }
-export default NewProductForm
+export default EditProductForm
 

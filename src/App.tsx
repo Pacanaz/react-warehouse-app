@@ -10,11 +10,13 @@ import {
   Link,
 } from "react-router-dom"
 
-import ProductPage from "./pages/ProductPage"
+import ProductListPage from "./pages/ProductListPage"
 import WelcomePage from "./pages/WelcomePage"
 import RootLayout from "./pages/RootLayout"
 import AddProductPage from "./pages/AddProductPage"
 import ProductContextProvider from "./context/ProductContext"
+import ProductDetailPage from "./pages/ProductDetailPage"
+import ProductEditPage from "./pages/ProductEditPage"
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,15 @@ const router = createBrowserRouter([
       { index: true, element: <WelcomePage /> },
       {
         path: "/products",
-        element: <ProductPage />,
+        element: <ProductListPage />,
+      },
+      {
+        path: '/products/:id',
+          element: <ProductDetailPage/>
+      },
+      {
+        path: '/products/:id/edit',
+          element: <ProductEditPage/>
       },
       {
         path: "/products/create",
