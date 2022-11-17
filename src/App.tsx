@@ -7,7 +7,6 @@ import {
 import {
   createBrowserRouter,
   RouterProvider,
-  Link,
 } from "react-router-dom"
 
 import ProductListPage from "./pages/ProductListPage"

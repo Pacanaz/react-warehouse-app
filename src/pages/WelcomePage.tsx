@@ -1,5 +1,4 @@
 import { Flex, Heading, Spacer } from "@chakra-ui/react"
-import { Link } from "react-router-dom"
 import { useProductData } from "../context/ProductContext"
 
 function WelcomePage() {

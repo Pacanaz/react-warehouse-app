@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Image } from '@chakra-ui/react'
+import { Button, Flex, Heading, Image } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 function ErrorPage() {
