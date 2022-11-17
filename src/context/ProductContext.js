@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 
 const ProductContext = createContext();
 
-const ProductContextProvider = (props) => {
+const ProductContextProvider = ({children}) => {
   const [products, setProducts] = useState(JSON.parse(window.localStorage.getItem('productData') || '[]'))
   const toast = useToast()
 
@@ -71,7 +71,7 @@ const ProductContextProvider = (props) => {
 
   return (
     <ProductContext.Provider value={{ products, getProduct, addProduct, deleteProduct, editProduct }}>
-      {props.children}
+      {children}
     </ProductContext.Provider>
   )
 }

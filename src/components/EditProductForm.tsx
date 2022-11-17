@@ -1,6 +1,6 @@
 import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
-import { Form, Link, useNavigate, useParams } from "react-router-dom"
+import { Form, useNavigate, useParams } from "react-router-dom"
 import { useProductData } from "../context/ProductContext"
 
 
@@ -53,7 +53,7 @@ function EditProductForm() {
     
       
     return (
-          <FormControl w={'auto'} mx={'5%'}>
+          <FormControl w={{base: 'sm', lg:'xl'}} mx={'5%'}>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormLabel>Product Name</FormLabel>
             <Input mb={'10px'}

@@ -1,13 +1,16 @@
 import { EditIcon } from '@chakra-ui/icons'
-import { MenuItem, MenuList } from '@chakra-ui/react'
+import { Button, MenuItem } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
-function EditButton( {id} : any ) {
+function EditButton( {id, type} : any ) {
   return (
     <>
-                 <Link to={`/products/${id}/edit`}><MenuItem icon={<EditIcon />} >
+    {type === 'menu' && <Link to={`/products/${id}/edit`}><MenuItem icon={<EditIcon />} >
                    Edit
-                 </MenuItem></Link>
+                 </MenuItem></Link>}
+    
+    {type === 'single' && <Link to={`/products/${id}/edit`}><Button>Edit</Button></Link>}
+                 
     </>
   )
 }

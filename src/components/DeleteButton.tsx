@@ -1,12 +1,12 @@
 import { DeleteIcon } from "@chakra-ui/icons"
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, MenuItem, useDisclosure } from "@chakra-ui/react"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { useProductData } from "../context/ProductContext"
 
 
 
-function DeleteButton( {id}:any ) {
+function DeleteButton( {id, type} : any ) {
 
 
     const {deleteProduct} = useProductData();
@@ -17,12 +17,20 @@ function DeleteButton( {id}:any ) {
 
   return (
     <>
-    <MenuItem onClick={() => {
+    {type === 'menu' &&<MenuItem onClick={() => {
         onOpen()
      }} icon={<DeleteIcon />}
        _hover={{ color: 'red' }}>
        Delete
-     </MenuItem>
+     </MenuItem> }
+
+     {type === 'single' &&<Button ml={'20px'} colorScheme={'red'} onClick={() => {
+        onOpen()
+     }}>
+       Delete
+     </Button> }
+
+
      <AlertDialog
 isOpen={isOpen}
 leastDestructiveRef={cancelRef}

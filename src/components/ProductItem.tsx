@@ -1,7 +1,6 @@
-import { DeleteIcon, EditIcon, HamburgerIcon } from '@chakra-ui/icons'
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, IconButton, Menu, MenuButton, MenuItem, MenuList, Tag, Td, Tr, useColorModeValue, useDisclosure } from '@chakra-ui/react'
-import {useRef, useState} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { HamburgerIcon } from '@chakra-ui/icons'
+import { IconButton, Menu, MenuButton, MenuList, Tag, Td, Tr, useColorModeValue,} from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 import { useProductData } from '../context/ProductContext'
 import DeleteButton from './DeleteButton'
 import EditButton from './EditButton'
@@ -18,9 +17,7 @@ interface productType {
 
 function ProductItem() {
 
-    const {products, deleteProduct, editProduct} = useProductData();
-
-    const [clicked, setClicked] = useState<productType | null>(null);
+    const { products } = useProductData();
     const navigate = useNavigate();
 
     const hoverBg = useColorModeValue('teal.50', 'teal.900');
@@ -42,8 +39,8 @@ function ProductItem() {
                  variant='outline'
                />
                <MenuList fontSize={'md'}>
-                <EditButton id={productItem.id} />
-                 <DeleteButton id={productItem.id} />
+                <EditButton id={productItem.id} type={'menu'} />
+                 <DeleteButton id={productItem.id} type={'menu'} />
                </MenuList>
              </Menu>
            </Td>
