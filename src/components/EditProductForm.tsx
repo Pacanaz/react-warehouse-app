@@ -1,4 +1,4 @@
-import { Button, FormControl, Input } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
 import { Form, Link, useNavigate, useParams } from "react-router-dom"
 import { useProductData } from "../context/ProductContext"
@@ -53,8 +53,9 @@ function EditProductForm() {
     
       
     return (
+          <FormControl w={'auto'} mx={'5%'}>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl>
+          <FormLabel>Product Name</FormLabel>
             <Input mb={'10px'}
               id='productName'
               placeholder='Product Name'
@@ -63,6 +64,7 @@ function EditProductForm() {
                 minLength: { value: 4, message: 'Minimum length should be 4' },
               } )} defaultValue={currentProduct.productName}
             />
+            <FormLabel>Quantity</FormLabel>
             <Input mb={'10px'}
               id='quantity'
               placeholder='Quantity'
@@ -72,6 +74,7 @@ function EditProductForm() {
                 required: 'This is required',
               })} defaultValue={currentProduct.quantity}
             />
+            <FormLabel>Price</FormLabel>
             <Input mb={'10px'}
               id='price'
               placeholder='Price'
@@ -82,14 +85,14 @@ function EditProductForm() {
                 required: 'This is required',
               })} defaultValue={currentProduct.price}
             />
-          </FormControl>
           <Button mt={4} colorScheme='teal' isLoading={isSubmitting} type='submit'>
-            Add to 📦
+            Edit 📦
           </Button>
           <Button onClick={() => {navigate(-1)}} mt={4} ml={4} colorScheme='gray'>
             Back
           </Button>
         </Form>
+          </FormControl>
       )
             }
 export default EditProductForm

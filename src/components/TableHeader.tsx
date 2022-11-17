@@ -10,7 +10,7 @@ const TableHeader = () => {
         return ( 
             <>
             <Th>Product name</Th>
-            <Th>Qty In Stock</Th>
+            <Th>Stock</Th>
             <Th>Price</Th>
             <Th>Tags</Th>
             <Th>Actions</Th>

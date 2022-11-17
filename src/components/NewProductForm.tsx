@@ -1,4 +1,4 @@
-import { Button, FormControl, Input } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
 import { Form, Link, useNavigate } from "react-router-dom"
 import {v4 as uuidv4} from 'uuid'
@@ -9,7 +9,7 @@ import { useProductData } from "../context/ProductContext"
 function NewProductForm() {
   const {addProduct} = useProductData();
     const navigate = useNavigate();
-
+    const currDate = new Date().toLocaleString();
     const {
         handleSubmit,
         register,
@@ -25,6 +25,16 @@ function NewProductForm() {
           quantityHistory: [],
         }
 
+        product.history.priceHistory.push({
+          createdAt: currDate,
+          price: product.price,
+        })
+
+        product.history.quantityHistory.push({
+          createdAt: currDate,
+          quantity: product.quantity,
+        })
+
 
         addProduct(product);
     
@@ -34,8 +44,9 @@ function NewProductForm() {
       }
       
     return (
+      <FormControl w={'auto'} mx={'5%'}>
         <Form onSubmit={handleSubmit(onSubmit)}>
-          <FormControl>
+        <FormLabel>Product Name</FormLabel>
             <Input mb={'10px'}
               id='productName'
               placeholder='Product Name'
@@ -44,6 +55,7 @@ function NewProductForm() {
                 minLength: { value: 4, message: 'Minimum length should be 4' },
               })}
             />
+            <FormLabel>Quantity</FormLabel>
             <Input mb={'10px'}
               id='quantity'
               placeholder='Quantity'
@@ -53,6 +65,7 @@ function NewProductForm() {
                 required: 'This is required',
               })}
             />
+            <FormLabel>Price</FormLabel>
             <Input mb={'10px'}
               id='price'
               placeholder='Price'
@@ -63,7 +76,6 @@ function NewProductForm() {
                 required: 'This is required',
               })}
             />
-          </FormControl>
           <Button mt={4} colorScheme='teal' isLoading={isSubmitting} type='submit'>
             Add to 📦
           </Button>
@@ -71,6 +83,7 @@ function NewProductForm() {
             Back
           </Button>
         </Form>
+          </FormControl>
       )
             }
 export default NewProductForm
