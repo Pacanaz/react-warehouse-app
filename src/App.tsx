@@ -2,9 +2,7 @@ import { ColorModeSwitcher } from "./ColorModeSwitcher"
 import {
   ChakraProvider,
   Flex,
-  Heading,
   theme,
-  Spacer,
 } from "@chakra-ui/react"
 import {
   createBrowserRouter,
@@ -16,6 +14,7 @@ import ProductPage from "./pages/ProductPage"
 import WelcomePage from "./pages/WelcomePage"
 import RootLayout from "./pages/RootLayout"
 import AddProductPage from "./pages/AddProductPage"
+import ProductContextProvider from "./context/ProductContext"
 
 const router = createBrowserRouter([
   {
@@ -35,7 +34,7 @@ const router = createBrowserRouter([
     ],
   },
 
- 
+
 ])
 
 
@@ -43,7 +42,9 @@ export const App = () => (
   <ChakraProvider theme={theme}>
     <Flex fontSize="xl" flexDirection='column' alignItems={'center'}>
       <ColorModeSwitcher justifySelf="flex-end" />
-      <RouterProvider router={router} />
+      <ProductContextProvider>
+        <RouterProvider router={router} />
+      </ProductContextProvider>
     </Flex>
   </ChakraProvider>
 )

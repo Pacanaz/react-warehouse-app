@@ -1,14 +1,13 @@
 import { Button, FormControl, Input } from "@chakra-ui/react"
-import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Form, Link, useNavigate } from "react-router-dom"
 import {v4 as uuidv4} from 'uuid'
+import { useProductData } from "../context/ProductContext"
 
 
   
 function NewProductForm() {
-
-    // TODO: useState and make the product list refresh after new product is added.
+  const {addProduct} = useProductData();
     const navigate = useNavigate();
 
     const {
@@ -21,11 +20,8 @@ function NewProductForm() {
 
         product.id=uuidv4()
   
-        const getProducts = JSON.parse(window.localStorage.getItem('productData') || '[]')
-        
-        console.log(getProducts)
 
-        window.localStorage.setItem('productData', JSON.stringify([...getProducts, product]))
+        addProduct(product);
     
         // Some sort of alert that item is added
 
