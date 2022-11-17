@@ -1,3 +1,4 @@
+import { useToast } from '@chakra-ui/react';
 import { createContext, useContext, useEffect, useState } from "react"
 
 
@@ -5,7 +6,7 @@ const ProductContext = createContext();
 
 const ProductContextProvider = (props) => {
   const [products, setProducts] = useState(JSON.parse(window.localStorage.getItem('productData') || '[]'))
-
+  const toast = useToast()
 
   useEffect(() => {
 
@@ -25,36 +26,45 @@ const ProductContextProvider = (props) => {
 
     const newProduct = data;
     setProducts([...products, newProduct])
-
+    toast({
+      title: 'Product created.',
+      description: `${data.productName} was created.`,
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
   }
 
   const deleteProduct = (id) => {
 
     const newProduct = products.filter(product => product.id !== id)
     setProducts(newProduct);
+    toast({
+      title: 'Product deleted.',
+      description: "Your product was deleted",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
 
   }
 
   const editProduct = (data) => {
    
-    // const editedProductsArr = products.map(product => {
-    //   if(product.id === editedProduct.id){
-    //     console.log('found same')
-    //     console.log(product)
-    //     setProducts([...product, editedProduct])
-    //     console.log(editedProductsArr)
-    //   }
-      
-    // }
-
     const productCopy = [...products];
 
     const targetIndex = products.findIndex(f=>f.id === data.id);
 
     productCopy[targetIndex] = data;
-    console.log(productCopy)
     setProducts(productCopy);
-    
+
+    toast({
+      title: 'Product updated',
+      description: `${data.productName} was updated.`,
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
 
     
   }

@@ -45,9 +45,9 @@ function EditProductForm() {
         }
     
         editProduct(currentProduct)
-        // Some sort of alert that item is added
+        
 
-        navigate('/products')
+        navigate(-1)
       }
 
     

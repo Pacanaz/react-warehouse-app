@@ -12,7 +12,9 @@ import {
     Legend,
   } from 'chart.js';
   import { Line } from 'react-chartjs-2';
-import { Box, Flex } from "@chakra-ui/react"
+import { Box, Flex, Menu } from "@chakra-ui/react"
+import DeleteButton from "../components/DeleteButton"
+import EditButton from "../components/EditButton"
 
   
 
@@ -111,6 +113,12 @@ function ProductDetailPage() {
       <p>Product name:{currentProduct.productName}</p>
       <p>Price:{currentProduct.price}</p>
       <p>Quantity:{currentProduct.quantity}</p>
+      <Box>
+      <Menu>
+      <EditButton id={id} />
+      <DeleteButton id={id} />
+      </Menu>
+      </Box>
       <Box w={'90%'}>
       {priceArr.length > 1 && <Line options={priceOptions} data={pData} />}
       {quantityArr.length > 1 && <Line options={quantityOptions} data={qData} />}

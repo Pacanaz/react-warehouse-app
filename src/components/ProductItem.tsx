@@ -3,6 +3,8 @@ import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, Al
 import {useRef, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useProductData } from '../context/ProductContext'
+import DeleteButton from './DeleteButton'
+import EditButton from './EditButton'
 
 
 interface productType {
@@ -17,8 +19,6 @@ interface productType {
 function ProductItem() {
 
     const {products, deleteProduct, editProduct} = useProductData();
-    const cancelRef = useRef<HTMLButtonElement>(null)
-    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [clicked, setClicked] = useState<productType | null>(null);
     const navigate = useNavigate();
@@ -42,48 +42,16 @@ function ProductItem() {
                  variant='outline'
                />
                <MenuList fontSize={'md'}>
-                 <Link to={`${productItem.id}/edit`}><MenuItem icon={<EditIcon />} >
-                   Edit
-                 </MenuItem></Link>
-                 <MenuItem onClick={() => {
-                    setClicked({id: productItem.id, productName: productItem.productName});
-                    onOpen()
-                 }} icon={<DeleteIcon />}
-                   _hover={{ color: 'red' }}>
-                   Delete
-                 </MenuItem>
-                 
+                <EditButton id={productItem.id} />
+                 <DeleteButton id={productItem.id} />
                </MenuList>
              </Menu>
            </Td>
          </Tr>  
+
+         
         )}  
-        <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={onClose}
-        isCentered
-      ><AlertDialogOverlay>
-      <AlertDialogContent>
-        <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-        ☠️ Delete product {clicked?.productName}?
-        </AlertDialogHeader>
-
-        <AlertDialogBody>
-          Are you sure? All the data about this product will be lost.
-        </AlertDialogBody>
-
-        <AlertDialogFooter>
-          <Button ref={cancelRef} onClick={onClose}>
-            Cancel
-          </Button>
-          <Button colorScheme='red' onClick={() => {deleteProduct(clicked?.id); onClose();}} ml={3}>
-            Delete
-          </Button>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialogOverlay>
-  </AlertDialog> 
+        
     </>
     
    
