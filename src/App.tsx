@@ -17,12 +17,13 @@ import AddProductPage from "./pages/AddProductPage"
 import ProductContextProvider from "./context/ProductContext"
 import ProductDetailPage from "./pages/ProductDetailPage"
 import ProductEditPage from "./pages/ProductEditPage"
+import ErrorPage from "./pages/ErrorPage"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <p>Page not found go <Link to='/'>back.</Link></p>,
+    errorElement: <ErrorPage/>,
     children: [
       { index: true, element: <WelcomePage /> },
       {

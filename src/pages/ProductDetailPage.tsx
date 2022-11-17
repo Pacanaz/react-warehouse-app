@@ -12,7 +12,7 @@ import {
     Legend,
   } from 'chart.js';
   import { Line } from 'react-chartjs-2';
-import { Box, Button, Flex, HStack, Menu, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stat, StatArrow, StatGroup, StatHelpText, Table, TableContainer, Tbody, Td, Text, Tr, useDisclosure } from "@chakra-ui/react"
+import { Box, Button, Flex, HStack, Menu, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stat, StatArrow, StatGroup, StatHelpText, Table, TableContainer, Tbody, Td, Text, Tr, useColorModeValue, useDisclosure } from "@chakra-ui/react"
 import DeleteButton from "../components/DeleteButton"
 import EditButton from "../components/EditButton"
 
@@ -65,7 +65,7 @@ function ProductDetailPage() {
       }
       
   }
-
+ {/* this is scuffed */}
   const quantityStat: any = getPercentageChange(lastQuantityHistory, currentProduct.quantity)
   const priceStat: any = getPercentageChange(lastPriceHistory, currentProduct.price)
 
@@ -77,17 +77,31 @@ function ProductDetailPage() {
         Title,
         Tooltip,
         Legend
-      );
-  
+        );
+        
+      const axisColor = useColorModeValue('#545558', '#cecece');
+
       const priceOptions = {
           responsive: true,
+          scales: {
+            y: {
+              ticks: { color: axisColor }
+            },
+            x: {
+              ticks: { color: axisColor }
+            }
+          },
           plugins: {
             legend: {
               position: 'bottom' as const,
+              labels:{
+                color: axisColor
+              },
             },
             title: {
               display: true,
               text: `${currentProduct.productName} Price Chart`,
+              color:axisColor,
             },
           },
         };
@@ -100,20 +114,34 @@ function ProductDetailPage() {
             label: 'Price',
             data: priceArr,
             borderColor: 'teal',
-            backgroundColor: 'teal',
+            backgroundColor: 'teal',   
+            tension: 0.4,
           },
         ],
       };
 
+
       const quantityOptions = {
           responsive: true,
+          scales: {
+            y: {
+              ticks: { color: axisColor }
+            },
+            x: {
+              ticks: { color: axisColor }
+            }
+          },
           plugins: {
             legend: {
               position: 'bottom' as const,
+              labels:{
+                color: axisColor
+              },
             },
             title: {
               display: true,
               text: `${currentProduct.productName} Quantity Chart`,
+              color:axisColor,
             },
           },
         };
@@ -127,6 +155,7 @@ function ProductDetailPage() {
             data: quantityArr,
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: 'rgb(255, 99, 132)',
+            tension: 0.4,
           },
         ],
       };
@@ -146,7 +175,7 @@ function ProductDetailPage() {
 
   return (
       <>
-      <Flex w={'100%'}  alignItems={'center'} justifyContent={'space-around'} direction={{base:'column', lg:'row'}}>
+      <Flex w={'100%'}  alignItems={'center'} justifyContent={priceArr.length > 1 && quantityArr.length > 1 ? 'space-around' : 'center'} direction={{base:'column', lg:'row'}}>
         <Button position={'absolute'} left={'5'} top={'10vh'} colorScheme={'teal'} onClick={() => {navigate(-1)}}>Back</Button>
         <Box p={'5%'} minWidth={'30%'}>
 
@@ -180,7 +209,7 @@ function ProductDetailPage() {
     <StatHelpText>
       
       <StatArrow type={quantityStat.status} />
-      {quantityStat.value}
+      {quantityStat.value} 
     </StatHelpText>
   </Stat></StatGroup> }
   {currentProduct.quantity}</Td>
@@ -194,6 +223,7 @@ function ProductDetailPage() {
       <DeleteButton id={id} type={'single'}/>
       </Menu>
       </Box>
+{priceArr.length && quantityArr.length && 
 
       <Box>
       {priceArr.length > 1 && (
@@ -216,6 +246,7 @@ function ProductDetailPage() {
 </>)}
 
       </Box>
+      }
       </Flex>
     
 

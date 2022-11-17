@@ -9,7 +9,7 @@ function EditButton( {id, type} : any ) {
                    Edit
                  </MenuItem></Link>}
     
-    {type === 'single' && <Link to={`/products/${id}/edit`}><Button>Edit</Button></Link>}
+    {type === 'single' && <Link to={`/products/${id}/edit`}><Button colorScheme={'teal'}>Edit</Button></Link>}
                  
     </>
   )

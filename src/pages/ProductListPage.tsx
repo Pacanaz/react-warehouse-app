@@ -50,7 +50,7 @@ function ProductListPage() {
     <Image src='/assets/images/pulp-fiction-john-travolta.gif' alt='Dan Abramov' />
 </Box>
         <Heading mb={'5'}>No products</Heading>
-       <Link to={'create'}><Button size={{base: 'xs', lg:'sm'}} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
+       <Link to={'create'}><Button size={{base: 'md', lg:'lg'}} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
           Add product
         </Button>
         </Link>
