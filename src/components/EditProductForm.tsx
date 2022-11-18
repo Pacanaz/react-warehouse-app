@@ -51,14 +51,9 @@ function EditProductForm() {
 
     }
 
+    isDirty && navigate(-1); editProduct(currentProduct)
 
-
-    isDirty && navigate(-1); editProduct(currentProduct);
-
-    
   }
-
-
 
   return (
     <FormControl w={{ base: 'xs', lg: 'xl' }} mx={'10%'}>

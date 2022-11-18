@@ -11,8 +11,6 @@ const ProductContextProvider = ({ children }) => {
   useEffect(() => {
     
     window.localStorage.setItem('productData', JSON.stringify(products))
-   
-   
 
   }, [products])
 
@@ -67,7 +65,6 @@ const ProductContextProvider = ({ children }) => {
       duration: 4000,
       isClosable: true,
     })
-
 
   }
 
