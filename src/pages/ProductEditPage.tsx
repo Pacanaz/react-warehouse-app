@@ -1,6 +1,5 @@
 import {
-  Text
-  ,
+  Flex,
 } from '@chakra-ui/react'
 import EditProductForm from '../components/EditProductForm'
 function EditProductPage() { 
@@ -8,8 +7,9 @@ function EditProductPage() {
 
   return (
     <>
-    <Text mb={'2%'}>Editing Product</Text>
+    <Flex alignItems={'center'} justifyContent={'center'} w={'100%'}>
     <EditProductForm/>
+    </Flex>
     </>
     
   )
