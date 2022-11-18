@@ -18,12 +18,6 @@ import EditButton from "../components/EditButton"
 import { ArrowBackIcon } from '@chakra-ui/icons'
 
 
-
-
-
-
-
-
 function ProductDetailPage() {
 
 
@@ -175,7 +169,7 @@ function ProductDetailPage() {
 
   return (
     <>
-        <Button size={['sm', 'md']} leftIcon={<ArrowBackIcon/>} alignSelf={'flex-start'} ml={'5'} mt={'-5'} colorScheme={'teal'} onClick={() => { navigate(-1) }}>Back</Button>
+        <Button position={'absolute'} left={'0'}  size={['sm', 'md']} leftIcon={<ArrowBackIcon/>} alignSelf={'flex-start'} ml={'5'} mt={'-5'} colorScheme={'teal'} onClick={() => { navigate(-1) }}>Back</Button>
       <Flex w={priceArr.length === 1 && quantityArr.length === 1 ? '40%' : '90%'} alignItems={'center'} justifyContent={priceArr.length > 1 && quantityArr.length > 1 ? 'space-around' : 'center'} direction={{ base: 'column', lg: 'row' }}>
         <Box p={'5%'} minWidth={'20%'} width={'100%'}>
 

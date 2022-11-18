@@ -33,10 +33,13 @@ function RootLayout() {
         </Container>
 
       </Box>
-
-
-
+      <Box w={'100vw'} h={'100vh'} display={'flex'} justifyContent={'center'} as="main">
       <Outlet />
+      </Box>
+
+
+      
+      <Box as="footer" h={'50px'} display={'flex'} flex={1} justifyContent={'center'} fontSize={'sm'} py={{ base: '5'}}>&copy; {new Date().getFullYear()}  Warehouse App</Box>
     </>
   )
 }
