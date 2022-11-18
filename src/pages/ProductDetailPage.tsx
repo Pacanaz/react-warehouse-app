@@ -188,7 +188,7 @@ function ProductDetailPage() {
                 <Tr>
                   <Td>Price</Td>
                   <Td isNumeric>
-                    {lastPriceHistory && (priceStat.value !== '100%' && priceStat.value !== 'Infinity%') &&
+                    {lastPriceHistory && (priceStat.value !== '100%' && priceStat.value !== 'Infinity%' && priceStat.value !== '0%') &&
                       <StatGroup display={'inline-block'} mr={'10px'}>
                         <Stat>
                           <StatHelpText>
@@ -202,7 +202,7 @@ function ProductDetailPage() {
                 <Tr>
                   <Td>Stock</Td>
                   <Td isNumeric>
-                    {lastQuantityHistory && (quantityStat.value !== '100%' && quantityStat.value !== 'Infinity%') &&
+                    {lastQuantityHistory && (quantityStat.value !== '100%' && quantityStat.value !== 'Infinity%' && quantityStat.value !== '0%') &&
                       <StatGroup display={'inline-block'} mr={'10px'}>
                         <Stat>
                           <StatHelpText>

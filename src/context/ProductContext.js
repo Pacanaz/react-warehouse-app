@@ -4,20 +4,22 @@ import { createContext, useContext, useEffect, useState } from "react"
 
 const ProductContext = createContext();
 
-const ProductContextProvider = ({children}) => {
+const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState(JSON.parse(window.localStorage.getItem('productData') || '[]'))
   const toast = useToast()
 
   useEffect(() => {
-
+    
     window.localStorage.setItem('productData', JSON.stringify(products))
-    console.log('changed')
+   
+   
+
   }, [products])
 
   const getProduct = (id) => {
-  
+
     const getSingleProduct = products.filter(product => product.id === id)
-    
+
     return getSingleProduct[0]
   }
 
@@ -50,10 +52,10 @@ const ProductContextProvider = ({children}) => {
   }
 
   const editProduct = (data) => {
-   
+
     const productCopy = [...products];
 
-    const targetIndex = products.findIndex(f=>f.id === data.id);
+    const targetIndex = products.findIndex(f => f.id === data.id);
 
     productCopy[targetIndex] = data;
     setProducts(productCopy);
@@ -66,7 +68,7 @@ const ProductContextProvider = ({children}) => {
       isClosable: true,
     })
 
-    
+
   }
 
   return (
