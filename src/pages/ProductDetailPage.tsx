@@ -176,7 +176,7 @@ function ProductDetailPage() {
     <>
       <Flex w={'100%'} alignItems={'center'} justifyContent={priceArr.length > 1 && quantityArr.length > 1 ? 'space-around' : 'center'} direction={{ base: 'column', lg: 'row' }}>
         <Button position={'absolute'} left={'5'} top={{base:'16vh', md:'12vh'}} colorScheme={'teal'} onClick={() => { navigate(-1) }}>Back</Button>
-        <Box p={'5%'} minWidth={'20%'}>
+        <Box p={'5%'} minWidth={'20%'} width={'100%'}>
 
           <TableContainer mb={'10%'} whiteSpace={'normal'}>
             <Table size='md'>

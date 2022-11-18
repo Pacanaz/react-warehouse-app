@@ -34,13 +34,13 @@ function ProductListPage() {
             </Link>
 
             <Table size={{ base: 'xs', md: 'md' }} colorScheme={'green'}>
-              <Thead fontSize={{ base: 'x-small'}}>
+              <Thead fontSize={{ base: 'xx-small'}}>
                 <TableHeader />
               </Thead>
               <Tbody fontSize={'md'}>
                 <ProductItem />
               </Tbody>
-              <Tfoot fontSize={{ base: 'x-small'}}>
+              <Tfoot fontSize={{ base: 'xx-small'}}>
                 <TableHeader />
               </Tfoot>
             </Table>

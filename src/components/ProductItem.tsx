@@ -29,13 +29,13 @@ function ProductItem() {
           <Td maxWidth={'40vw'}>{productItem.productName}</Td>
           <Td>{productItem.quantity}</Td>
           <Td>{productItem.price}</Td>
-          <Td><Tag variant='solid' colorScheme='teal'>Green</Tag></Td>
+          <Td><Tag variant='solid' colorScheme='teal' size={['xs', 'sm', 'md']}>Green</Tag></Td>
           <Td textAlign={'center'} onClick={(e) => { e.stopPropagation() }}>
             <Menu>
               <MenuButton
                 as={IconButton}
                 aria-label='Actions'
-                icon={<HamburgerIcon />}
+                icon={<HamburgerIcon/>}
                 variant='outline'
               />
               <MenuList fontSize={'md'}>
