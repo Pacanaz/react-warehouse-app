@@ -60,6 +60,7 @@ function NewProductForm() {
           id='quantity'
           placeholder='Quantity'
           type='number'
+          inputMode="numeric"
           min="0"
           {...register('quantity', {
             required: 'This is required',
@@ -70,6 +71,7 @@ function NewProductForm() {
           id='price'
           placeholder='Price'
           type='number'
+          inputMode="numeric"
           step="0.01"
           min="0"
           {...register('price', {
