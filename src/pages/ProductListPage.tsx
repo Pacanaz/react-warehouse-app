@@ -11,17 +11,25 @@ import {
   Image,
 } from "@chakra-ui/react"
 import { AddIcon } from '@chakra-ui/icons'
-
 import TableHeader from "../components/TableHeader"
 import { Link } from "react-router-dom"
 import ProductItem from "../components/ProductItem"
 import { useProductData } from "../context/ProductContext"
+import { useState, useEffect } from "react"
+import Pagination from "../components/Pagination"
 
 
 
 function ProductListPage() {
 
   const { products } = useProductData()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [productsPerPage, setProductsPerPage] = useState(5)
+
+  const lastProdIndex = currentPage * productsPerPage;
+  const firstProdIndex = lastProdIndex - productsPerPage;
+  const currentProducts = products.slice(firstProdIndex, lastProdIndex);
+  
   return (
     <>
 
@@ -38,13 +46,16 @@ function ProductListPage() {
                 <TableHeader />
               </Thead>
               <Tbody fontSize={'md'}>
-                <ProductItem />
+                <ProductItem products={currentProducts} />
               </Tbody>
-              <Tfoot fontSize={{ base: 'xx-small' }}>
-                {/* <TableHeader /> */}
-
-              </Tfoot>
             </Table>
+            <Pagination 
+                totalProducts={products.length} 
+                productsPerPage={productsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                setProductsPerPage={setProductsPerPage}
+                />
           </>
           : <Flex direction={'column'} alignItems={'center'}>
             <Box boxSize='xs'>

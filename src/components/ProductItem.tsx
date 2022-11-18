@@ -1,9 +1,9 @@
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { IconButton, Menu, MenuButton, MenuList, Tag, Td, Tr, useColorModeValue, } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
-import { useProductData } from '../context/ProductContext'
 import DeleteButton from './DeleteButton'
 import EditButton from './EditButton'
+
 
 
 interface productType {
@@ -15,11 +15,11 @@ interface productType {
 
 
 
-function ProductItem() {
+function ProductItem( {products} : any) {
 
-  const { products } = useProductData()
   const navigate = useNavigate()
-
+ 
+  
   const hoverBg = useColorModeValue('teal.50', 'teal.900')
 
   return (
