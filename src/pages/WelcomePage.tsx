@@ -1,4 +1,4 @@
-import { Flex, Heading, Spacer } from "@chakra-ui/react"
+import { Flex, Heading } from "@chakra-ui/react"
 import { useProductData } from "../context/ProductContext"
 
 function WelcomePage() {
@@ -13,8 +13,6 @@ function WelcomePage() {
     <Heading fontWeight={'normal'} size={'md'}>There {products.length === 1 ? 'is' : 'are'} currently <b style={{color:'teal', fontSize:'35px'}}>{products.length}</b> 
     {products.length === 1 ? ' product' : ' products'} in the system! </Heading>
     } 
-    <Spacer mb={'5%'}/>
-    There is nothing more on this page, navigate over to products!
     </Flex>
     </>
   )
