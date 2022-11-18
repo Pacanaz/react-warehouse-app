@@ -25,7 +25,7 @@ function ProductListPage() {
   return (
     <>
 
-      <TableContainer whiteSpace={'normal'}>
+      <TableContainer whiteSpace={'normal'} maxWidth={'90%'} width={{base:'100%'}}>
         {products.length !== 0 ?
           <>
             <Link to={'create'}><Button mb={'1vh'} size={{ base: 'xs', lg: 'sm' }} alignSelf={'flex-start'} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
@@ -33,7 +33,7 @@ function ProductListPage() {
             </Button>
             </Link>
 
-            <Table size={{ base: 'xs', md: 'md' }} colorScheme={'green'}>
+            <Table size={['xs', 'sm', 'md']} colorScheme={'green'}>
               <Thead fontSize={{ base: 'xx-small' }}>
                 <TableHeader />
               </Thead>

@@ -13,7 +13,7 @@ const TableHeader = () => {
             <Th>Stock</Th>
             <Th>Price</Th>
             <Th>Tags</Th>
-            <Th>Actions</Th>
+            <Th textAlign={'center'}>Actions</Th>
           </>
             )
     
