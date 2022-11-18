@@ -15,7 +15,7 @@ function RootLayout() {
 
 
             <Flex justify="space-between" alignItems={'center'} flex="1" direction={{base:'column',  sm:'row'}}>
-              <Heading cursor={'pointer'} onClick={() => { navigate('/') }} size={{ base: 'sm', lg: 'lg' }} fontSize={['xs', 'sm', 'xl']} alignSelf={'center'}><Text display={'inline'} fontSize={['xs', 'sm', 'xl']} style={{ background: 'teal', padding: '1vh', borderRadius: '5px', boxShadow: '3px 2px 5px 0px rgb(0 0 0 / 60%)' }}>📦</Text> Warehouse <span style={{ color: 'teal' }}>App</span></Heading>
+              <Heading userSelect={'none'} cursor={'pointer'} onClick={() => { navigate('/') }} size={{ base: 'sm', lg: 'lg' }} fontSize={['xs', 'sm', 'xl']} alignSelf={'center'}><Text display={'inline'} fontSize={['xs', 'sm', 'xl']} style={{ background: 'teal', padding: '1vh', borderRadius: '5px', boxShadow: '3px 2px 5px 0px rgb(0 0 0 / 60%)' }}>📦</Text> Warehouse <span style={{ color: 'teal' }}>App</span></Heading>
               <ButtonGroup mt={{base: '2vh', sm:'0'}} variant="primary" spacing="8">
 
                 <NavLink to='/' style={({ isActive }) =>

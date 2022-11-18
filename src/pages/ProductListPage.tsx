@@ -42,7 +42,7 @@ function ProductListPage() {
             </Link>
 
             <Table size={['xs', 'sm', 'md']} colorScheme={'green'}>
-              <Thead fontSize={{ base: 'xx-small' }}>
+              <Thead userSelect={'none'} fontSize={{ base: 'xx-small' }}>
                 <TableHeader />
               </Thead>
               <Tbody fontSize={'md'}>

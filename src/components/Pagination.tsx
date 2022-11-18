@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
-import { Box, Button, Flex, Select, Text } from '@chakra-ui/react'
+import { Box, Flex, Select, Text } from '@chakra-ui/react'
 import { useState, useEffect } from "react"
 
 function Pagination({ totalProducts, productsPerPage, setCurrentPage, currentPage, setProductsPerPage }: any) {
@@ -12,7 +12,7 @@ function Pagination({ totalProducts, productsPerPage, setCurrentPage, currentPag
 
         setCurrentPage(currentPaginationPage)
 
-    }, [currentPaginationPage])
+    }, [currentPaginationPage, setCurrentPage])
 
 
 
@@ -27,9 +27,9 @@ function Pagination({ totalProducts, productsPerPage, setCurrentPage, currentPag
     return (
         <>
             <Flex>
-                <Box mt={'20px'} width={'100%'} textAlign={'left'} display={'flex'} alignItems={'center'}>
+                <Box userSelect={'none'} mt={'20px'} width={'100%'} textAlign={'left'} display={'flex'} alignItems={'center'}>
                     {
-                       pages.length > 1 && 
+                       
                        <>
                         <Select w={'80px'} placeholder='' value={currentPageSel} onChange={(event) => { setProductsPerPage(event.target.value); setCurrentPageSel(event.target.value) }}>
                             {
@@ -43,16 +43,16 @@ function Pagination({ totalProducts, productsPerPage, setCurrentPage, currentPag
                     }
                 </Box>
 
-                <Box mt={'20px'} width={'100%'} textAlign={'right'} display={'flex'} justifyContent={'flex-end'} alignItems={'center'}>
+                <Box userSelect={'none'} mt={'20px'} width={'100%'} textAlign={'right'} display={'flex'} justifyContent={'flex-end'} alignItems={'center'}>
                     {
                         pages.length > 1 &&
                         // pages.map((page, index) => {
                         //     return <Button colorScheme={page === currentPage ? 'teal' : 'gray'} mr={'10px'} key={index} onClick={() => setCurrentPage(page)} >{page}</Button>
                         // })
                         <>
-                            <ChevronLeftIcon fontSize={'30px'} visibility={currentPaginationPage !== 1 ? 'visible' : 'hidden'} onClick={() => setCurrentPaginationPage(currentPaginationPage - 1)} />
+                            <ChevronLeftIcon cursor={'pointer'} _hover={{color:'teal'}} fontSize={'30px'} visibility={currentPaginationPage !== 1 ? 'visible' : 'hidden'} onClick={() => setCurrentPaginationPage(currentPaginationPage - 1)} />
                             {currentPaginationPage}
-                            <ChevronRightIcon fontSize={'30px'} visibility={currentPaginationPage !== lastPage ? 'visible' : 'hidden'}
+                            <ChevronRightIcon cursor={'pointer'} _hover={{color:'teal'}} fontSize={'30px'} visibility={currentPaginationPage !== lastPage ? 'visible' : 'hidden'}
                                 onClick={() => setCurrentPaginationPage(currentPaginationPage + 1)} />
 
                         </>
