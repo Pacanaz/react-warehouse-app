@@ -1,5 +1,6 @@
-import { Button, FormControl, FormLabel, Input, Tooltip, useToast } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, Input, Text, Tooltip, useToast } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
+import { ErrorMessage } from "@hookform/error-message"
 import { Form, useNavigate, useParams } from "react-router-dom"
 import { useProductData } from "../context/ProductContext"
 
@@ -17,8 +18,9 @@ function EditProductForm() {
   const {
     handleSubmit,
     register,
-    formState: { isSubmitting, isDirty },
+    formState: { isSubmitting, isDirty, errors },
   } = useForm({
+    criteriaMode: "all",
     defaultValues: {
       productName: currentProduct.productName,
       quantity: currentProduct.quantity,
@@ -52,19 +54,9 @@ function EditProductForm() {
 
 
 
-    if (!isDirty) {
-      toast({
-        title: 'What are you doing?',
-        description: `${product.productName} wasn't saved because nothing was changed.`,
-        status: 'warning',
-        duration: 9000,
-        isClosable: true,
-      })
-    } else {
-      navigate(-1)
-      editProduct(currentProduct)
+    isDirty && navigate(-1); editProduct(currentProduct);
 
-    }
+    
   }
 
 
@@ -72,7 +64,7 @@ function EditProductForm() {
   return (
     <FormControl w={{ base: 'xs', lg: 'xl' }} mx={'10%'}>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormLabel ml={{base:'10px', sm:'0'}}>Product Name</FormLabel>
+        <FormLabel ml={{ base: '10px', sm: '0' }}>Product Name</FormLabel>
         <Input mb={'10px'}
           id='productName'
           placeholder='Product Name'
@@ -81,7 +73,8 @@ function EditProductForm() {
             minLength: { value: 4, message: 'Minimum length should be 4' },
           })}
         />
-        <FormLabel ml={{base:'10px', sm:'0'}}>Quantity</FormLabel>
+        <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="productName" />
+        <FormLabel ml={{ base: '10px', sm: '0' }}>Quantity</FormLabel>
         <Input mb={'10px'}
           id='quantity'
           placeholder='Quantity'
@@ -91,7 +84,8 @@ function EditProductForm() {
             required: 'This is required',
           })}
         />
-        <FormLabel ml={{base:'10px', sm:'0'}}>Price</FormLabel>
+        <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="quantity" />
+        <FormLabel ml={{ base: '10px', sm: '0' }}>Price</FormLabel>
         <Input mb={'10px'}
           id='price'
           placeholder='Price'
@@ -102,12 +96,13 @@ function EditProductForm() {
             required: 'This is required',
           })}
         />
-        <Button mt={4} w={{base:'90%', sm: 'inherit'}} mx={{base:'5%', sm: 'inherit'}} colorScheme='teal' isLoading={isSubmitting} disabled={!isDirty} type='submit'>
+        <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="price" />
+        <Button mt={4} w={{ base: '90%', sm: 'inherit' }} mx={{ base: '5%', sm: 'inherit' }} colorScheme='teal' isLoading={isSubmitting} disabled={!isDirty} type='submit'>
           {!isDirty ? <Tooltip hasArrow label="You didn't change anything!" aria-label='A tooltip'>
             Edit 📦
           </Tooltip> : 'Edit 📦'}
         </Button>
-        <Button w={{base:'90%', sm: 'inherit'}} mx={{base:'5%', sm: '4'}} onClick={() => { navigate(-1) }} mt={4} colorScheme='gray'>
+        <Button w={{ base: '90%', sm: 'inherit' }} mx={{ base: '5%', sm: '4' }} onClick={() => { navigate(-1) }} mt={4} colorScheme='gray'>
           Back
         </Button>
       </Form>

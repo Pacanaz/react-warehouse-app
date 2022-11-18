@@ -1,9 +1,9 @@
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
+import { Button, FormControl , FormLabel, Input, Text } from "@chakra-ui/react"
+import { ErrorMessage } from "@hookform/error-message"
 import { useForm } from "react-hook-form"
 import { Form, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'
 import { useProductData } from "../context/ProductContext"
-
 
 
 function NewProductForm() {
@@ -13,8 +13,10 @@ function NewProductForm() {
   const {
     handleSubmit,
     register,
-    formState: { isSubmitting },
-  } = useForm()
+    formState: { isSubmitting, errors} ,
+  } = useForm<any>({
+    criteriaMode: "all"
+  })
 
   function onSubmit(product: any) {
 
@@ -37,9 +39,6 @@ function NewProductForm() {
 
 
     addProduct(product)
-
-    // Some sort of alert that item is added
-
     navigate('/products')
   }
 
@@ -55,6 +54,7 @@ function NewProductForm() {
             minLength: { value: 4, message: 'Minimum length should be 4' },
           })}
         />
+        <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="productName" />
         <FormLabel ml={{base:'10px', sm:'0'}}>Quantity</FormLabel>
         <Input mb={'10px'}
           id='quantity'
@@ -66,6 +66,7 @@ function NewProductForm() {
             required: 'This is required',
           })}
         />
+        <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="quantity" />
         <FormLabel ml={{base:'10px', sm:'0'}}>Price</FormLabel>
         <Input mb={'10px'}
           id='price'
@@ -78,6 +79,7 @@ function NewProductForm() {
             required: 'This is required',
           })}
         />
+  <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="price" />
         <Button mt={4} w={{base:'90%', sm: 'inherit'}} mx={{base:'5%', sm: 'inherit'}} colorScheme='teal' isLoading={isSubmitting} type='submit'>
           Add to 📦
         </Button>

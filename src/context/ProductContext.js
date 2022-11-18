@@ -32,7 +32,7 @@ const ProductContextProvider = ({ children }) => {
       title: 'Product created.',
       description: `${data.productName} was created.`,
       status: 'success',
-      duration: 9000,
+      duration: 4000,
       isClosable: true,
     })
   }
@@ -45,7 +45,7 @@ const ProductContextProvider = ({ children }) => {
       title: 'Product deleted.',
       description: "Your product was deleted",
       status: 'success',
-      duration: 9000,
+      duration: 4000,
       isClosable: true,
     })
 
@@ -64,7 +64,7 @@ const ProductContextProvider = ({ children }) => {
       title: 'Product updated',
       description: `${data.productName} was updated.`,
       status: 'success',
-      duration: 9000,
+      duration: 4000,
       isClosable: true,
     })
 
