@@ -28,20 +28,21 @@ function ProductListPage() {
       <TableContainer whiteSpace={'normal'}>
         {products.length !== 0 ?
           <>
-            <Link to={'create'}><Button mb={'1vh'} size={{ base: 'xs', lg: 'sm' }}  alignSelf={'flex-start'} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
+            <Link to={'create'}><Button mb={'1vh'} size={{ base: 'xs', lg: 'sm' }} alignSelf={'flex-start'} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
               Add product
             </Button>
             </Link>
 
             <Table size={{ base: 'xs', md: 'md' }} colorScheme={'green'}>
-              <Thead fontSize={{ base: 'xx-small'}}>
+              <Thead fontSize={{ base: 'xx-small' }}>
                 <TableHeader />
               </Thead>
               <Tbody fontSize={'md'}>
                 <ProductItem />
               </Tbody>
-              <Tfoot fontSize={{ base: 'xx-small'}}>
-                <TableHeader />
+              <Tfoot fontSize={{ base: 'xx-small' }}>
+                {/* <TableHeader /> */}
+
               </Tfoot>
             </Table>
           </>
