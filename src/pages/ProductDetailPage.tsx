@@ -15,6 +15,7 @@ import { Line } from 'react-chartjs-2'
 import { Box, Button, Flex, Menu, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Stat, StatArrow, StatGroup, StatHelpText, Table, TableContainer, Tbody, Td, Tr, useColorModeValue, useDisclosure } from "@chakra-ui/react"
 import DeleteButton from "../components/DeleteButton"
 import EditButton from "../components/EditButton"
+import { ArrowBackIcon } from '@chakra-ui/icons'
 
 
 
@@ -174,8 +175,8 @@ function ProductDetailPage() {
 
   return (
     <>
-      <Flex w={'100%'} alignItems={'center'} justifyContent={priceArr.length > 1 && quantityArr.length > 1 ? 'space-around' : 'center'} direction={{ base: 'column', lg: 'row' }}>
-        <Button position={'absolute'} left={'5'} top={{base:'16vh', md:'12vh'}} colorScheme={'teal'} onClick={() => { navigate(-1) }}>Back</Button>
+        <Button size={['sm', 'md']} leftIcon={<ArrowBackIcon/>} alignSelf={'flex-start'} ml={'5'} mt={'-5'} colorScheme={'teal'} onClick={() => { navigate(-1) }}>Back</Button>
+      <Flex w={'95%'} alignItems={'center'} justifyContent={priceArr.length > 1 && quantityArr.length > 1 ? 'space-around' : 'center'} direction={{ base: 'column', lg: 'row' }}>
         <Box p={'5%'} minWidth={'20%'} width={'100%'}>
 
           <TableContainer mb={'10%'} whiteSpace={'normal'}>

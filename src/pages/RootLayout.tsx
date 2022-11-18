@@ -8,7 +8,7 @@ function RootLayout() {
 
   return (
     <>
-      <Box as="section" pb={{ base: '12', md: '24' }}>
+      <Box as="section" pb={{ base: '12', md: '12' }}>
 
         <Container borderBottom={'2px solid teal'} width={'100vw'} maxWidth={'100vw'} py={{ base: '4', lg: '5' }} px={{ base: '10', lg: '20' }}>
           <HStack spacing="10" justify="space-between">
