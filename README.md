@@ -1,7 +1,7 @@
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
 
-Using Chakra UI as well.
+Using Chakra UI template as well.
 
 ## Warehouse system 
 
@@ -13,6 +13,7 @@ Forms made with react-hook-forms.
 
 Charts in product detail page made with react-chart-js-2
 
+State management done with Context API.
 
-(obviously you can check it all in package.json, I'm just trying to fill this readme section up :D )
+(obviously you can check it all in package.json, and the files I'm just trying to fill this readme section up :D )
 
