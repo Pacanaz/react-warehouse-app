@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input, Text, Tooltip, useToast } from "@chakra-ui/react"
+import { Button, FormControl, FormLabel, Input, Text, Tooltip } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
 import { Form, useNavigate, useParams } from "react-router-dom"
@@ -27,7 +27,6 @@ function EditProductForm() {
       price: currentProduct.price
     },
   })
-  const toast = useToast()
   function onSubmit(product: any) {
 
     const currDate = new Date().toLocaleString()

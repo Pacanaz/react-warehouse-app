@@ -7,34 +7,45 @@ function Pagination({ totalProducts, productsPerPage, setCurrentPage, currentPag
     const [currentPaginationPage, setCurrentPaginationPage] = useState(1)
 
     let pages = []
+    let prodSelect = [5]
 
     useEffect(() => {
 
         setCurrentPage(currentPaginationPage)
 
-    }, [currentPaginationPage, setCurrentPage])
+        if(currentPaginationPage !== 1 && totalProducts === productsPerPage){
+            setCurrentPaginationPage(1);
+        }
+
+    }, [currentPaginationPage, setCurrentPage, totalProducts, productsPerPage])
 
 
 
     for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
         pages.push(i)
     }
+   
+   let i = 5;
+   do {
+       i= i+5;
+       prodSelect.push(i);
+    
+   } while (i<totalProducts);
+
 
     const lastPage = Math.ceil(totalProducts / productsPerPage)
-
-    const pagesSelector = [5, 10, 15, 20, 30, 40, 50]
 
     return (
         <>
             <Flex>
                 <Box userSelect={'none'} mt={'20px'} width={'100%'} textAlign={'left'} display={'flex'} alignItems={'center'}>
                     {
-                       
+                        currentPaginationPage === 1 &&
                        <>
                         <Select w={'80px'} placeholder='' value={currentPageSel} onChange={(event) => { setProductsPerPage(event.target.value); setCurrentPageSel(event.target.value) }}>
                             {
-                                pagesSelector.map((pageSel, index) => {
-                                    return <option value={pageSel}>{pageSel}</option>
+                                prodSelect.map((prodSel, index) => {
+                                    return <option key={index} value={prodSel}>{prodSel}</option>
                                 })
                             }
                         </Select>

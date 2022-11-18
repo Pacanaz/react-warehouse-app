@@ -2,7 +2,6 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   TableContainer,
   Button,
   Heading,
@@ -15,7 +14,7 @@ import TableHeader from "../components/TableHeader"
 import { Link } from "react-router-dom"
 import ProductItem from "../components/ProductItem"
 import { useProductData } from "../context/ProductContext"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Pagination from "../components/Pagination"
 
 
