@@ -44,9 +44,9 @@ function NewProductForm() {
   }
 
   return (
-    <FormControl w={{ base: 'sm', lg: 'xl' }} mx={'5%'}>
+    <FormControl w={{ base: 'xs', lg: 'xl' }} mx={'10%'}>
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FormLabel>Product Name</FormLabel>
+        <FormLabel ml={{base:'10px', sm:'0'}}>Product Name</FormLabel>
         <Input mb={'10px'}
           id='productName'
           placeholder='Product Name'
@@ -55,7 +55,7 @@ function NewProductForm() {
             minLength: { value: 4, message: 'Minimum length should be 4' },
           })}
         />
-        <FormLabel>Quantity</FormLabel>
+        <FormLabel ml={{base:'10px', sm:'0'}}>Quantity</FormLabel>
         <Input mb={'10px'}
           id='quantity'
           placeholder='Quantity'
@@ -66,7 +66,7 @@ function NewProductForm() {
             required: 'This is required',
           })}
         />
-        <FormLabel>Price</FormLabel>
+        <FormLabel ml={{base:'10px', sm:'0'}}>Price</FormLabel>
         <Input mb={'10px'}
           id='price'
           placeholder='Price'
@@ -78,10 +78,10 @@ function NewProductForm() {
             required: 'This is required',
           })}
         />
-        <Button mt={4} colorScheme='teal' isLoading={isSubmitting} type='submit'>
+        <Button mt={4} w={{base:'90%', sm: 'inherit'}} mx={{base:'5%', sm: 'inherit'}} colorScheme='teal' isLoading={isSubmitting} type='submit'>
           Add to 📦
         </Button>
-        <Button onClick={() => { navigate(-1) }} mt={4} ml={4} colorScheme='gray'>
+        <Button w={{base:'90%', sm: 'inherit'}} mx={{base:'5%', sm: '4'}} onClick={() => { navigate(-1) }} mt={4} colorScheme='gray'>
           Back
         </Button>
       </Form>

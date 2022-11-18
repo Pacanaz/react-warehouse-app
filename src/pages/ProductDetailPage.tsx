@@ -99,7 +99,7 @@ function ProductDetailPage() {
       },
       title: {
         display: true,
-        text: `${currentProduct.productName} Price Chart`,
+        text: `Price Chart`,
         color: axisColor,
       },
     },
@@ -139,7 +139,7 @@ function ProductDetailPage() {
       },
       title: {
         display: true,
-        text: `${currentProduct.productName} Quantity Chart`,
+        text: `Quantity Chart`,
         color: axisColor,
       },
     },
@@ -175,15 +175,15 @@ function ProductDetailPage() {
   return (
     <>
       <Flex w={'100%'} alignItems={'center'} justifyContent={priceArr.length > 1 && quantityArr.length > 1 ? 'space-around' : 'center'} direction={{ base: 'column', lg: 'row' }}>
-        <Button position={'absolute'} left={'5'} top={'10vh'} colorScheme={'teal'} onClick={() => { navigate(-1) }}>Back</Button>
-        <Box p={'5%'} minWidth={'30%'}>
+        <Button position={'absolute'} left={'5'} top={{base:'16vh', md:'12vh'}} colorScheme={'teal'} onClick={() => { navigate(-1) }}>Back</Button>
+        <Box p={'5%'} minWidth={'20%'}>
 
-          <TableContainer mb={'10%'}>
+          <TableContainer mb={'10%'} whiteSpace={'normal'}>
             <Table size='md'>
-              <Tbody>
+              <Tbody fontSize={['xs', 'sm', 'md']}>
                 <Tr>
                   <Td>Product</Td>
-                  <Td isNumeric>{currentProduct.productName}</Td>
+                  <Td isNumeric maxWidth={'30vw'}>{currentProduct.productName}</Td>
                 </Tr>
                 <Tr>
                   <Td>Price</Td>
@@ -228,7 +228,7 @@ function ProductDetailPage() {
             {priceArr.length > 1 && (
               <>
                 <Box position={'relative'} width={{ base: '400px', lg: '600px' }}>
-                  <Button size={'xs'} position={'absolute'} top={'-10'} right={'-5'}
+                  <Button display={{base:'none', md:'block'}} size={'xs'} position={'absolute'} top={'-10'} right={'-5'}
                     onClick={() => handleChartPick('price')}
                     m={4}
                   >{`Full Screen Chart`}</Button>
@@ -237,7 +237,7 @@ function ProductDetailPage() {
               (
                 <>
                   <Box position={'relative'} width={{ base: '400px', lg: '600px' }}>
-                    <Button size={'xs'} position={'absolute'} bottom={'-10'} right={'-5'}
+                    <Button display={{base:'none', md:'block'}} size={'xs'} position={'absolute'} bottom={'-10'} right={'-5'}
                       onClick={() => handleChartPick('quantity')}
                       m={4}
                     >{`Full Screen Chart`}</Button>
@@ -253,7 +253,7 @@ function ProductDetailPage() {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody display={'flex'} alignItems={'center'} justifyContent={'center'}>
             {chart}
           </ModalBody>
           <ModalFooter>

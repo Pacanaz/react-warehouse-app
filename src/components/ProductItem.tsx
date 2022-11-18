@@ -25,8 +25,8 @@ function ProductItem() {
   return (
     <>
       {products.map((productItem: productType) =>
-        <Tr onClick={() => navigate(productItem.id)} key={productItem.id} _hover={{ background: hoverBg, cursor: 'pointer' }} >
-          <Td>{productItem.productName}</Td>
+        <Tr onClick={() => navigate(productItem.id)} key={productItem.id} fontSize={['xs', 'sm', 'md']}  _hover={{ background: hoverBg, cursor: 'pointer' }} >
+          <Td maxWidth={'40vw'}>{productItem.productName}</Td>
           <Td>{productItem.quantity}</Td>
           <Td>{productItem.price}</Td>
           <Td><Tag variant='solid' colorScheme='teal'>Green</Tag></Td>

@@ -25,22 +25,22 @@ function ProductListPage() {
   return (
     <>
 
-      <TableContainer>
+      <TableContainer whiteSpace={'normal'}>
         {products.length !== 0 ?
           <>
-            <Link to={'create'}><Button size={{ base: 'xs', lg: 'sm' }} ml={'1em'} alignSelf={'flex-start'} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
+            <Link to={'create'}><Button mb={'1vh'} size={{ base: 'xs', lg: 'sm' }}  alignSelf={'flex-start'} leftIcon={<AddIcon />} colorScheme='teal' variant='solid'>
               Add product
             </Button>
             </Link>
 
-            <Table size={{ base: 'sm', lg: 'lg' }} colorScheme={'green'}>
-              <Thead>
+            <Table size={{ base: 'xs', md: 'md' }} colorScheme={'green'}>
+              <Thead fontSize={{ base: 'x-small'}}>
                 <TableHeader />
               </Thead>
               <Tbody fontSize={'md'}>
                 <ProductItem />
               </Tbody>
-              <Tfoot>
+              <Tfoot fontSize={{ base: 'x-small'}}>
                 <TableHeader />
               </Tfoot>
             </Table>

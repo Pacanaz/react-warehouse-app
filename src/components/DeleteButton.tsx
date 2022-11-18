@@ -24,7 +24,7 @@ function DeleteButton( {id, type} : any ) {
        Delete
      </MenuItem> }
 
-     {type === 'single' &&<Button ml={'20px'} colorScheme={'red'} onClick={() => {
+     {type === 'single' &&<Button size={['xs', 'sm', 'md']} ml={'20px'} colorScheme={'red'} onClick={() => {
         onOpen()
      }}>
        Delete
