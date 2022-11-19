@@ -34,7 +34,7 @@ function ProductItem({ products }: any) {
 
             {productItem.tags.map((tag: string, index: number) => {
 
-              return <Tag m={'3px'} size={'md'} key={index} variant='solid' colorScheme={tag.toLocaleLowerCase()}>
+              return <Tag m={'3px'} size={['sm', 'md']} key={index} variant='solid' colorScheme={tag.toLocaleLowerCase()}>
                 {tag}
               </Tag>
 

@@ -39,7 +39,7 @@ function Pagination({ totalProducts, productsPerPage, setCurrentPage, currentPag
                     {
                         currentPaginationPage === 1 &&
                         <>
-                            <Select w={'80px'} placeholder='' value={currentPageSel} onChange={(event) => { setProductsPerPage(event.target.value); setCurrentPageSel(event.target.value) }}>
+                            <Select w={{base:'6rem', sm:'5rem'}} placeholder='' value={currentPageSel} onChange={(event) => { setProductsPerPage(event.target.value); setCurrentPageSel(event.target.value) }}>
                                 {
                                     prodSelect.map((prodSel, index) => {
                                         return <option key={index} value={prodSel}>{prodSel}</option>
