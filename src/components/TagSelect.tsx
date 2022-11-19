@@ -17,15 +17,6 @@ function TagSelect({handleTagData ,currentTags} : any ) {
         const filteredTagArr  = tagArr.filter((tag : string) => tag !== value)
         setTagArr(filteredTagArr)
     }
-
-    const tagDirtyStatus = () => {
-        console.log('currenttags');
-        console.log(currentTags);
-        console.log('tagarr');
-        console.log(tagArr);
-
-       
-    }
        
 
     
@@ -53,14 +44,13 @@ function TagSelect({handleTagData ,currentTags} : any ) {
                         <TagLabel>{item}</TagLabel>
                         <TagCloseButton onClick={() => {
                             removeTag(item);
-                            tagDirtyStatus();
                         }} />
                     </Tag>
                 })}
             </HStack>
 
             {tagArr.length !== tags.length &&
-                <Select mt={2} placeholder='Select tag' onChange={(e) => { handleTag(e.target.value); tagDirtyStatus(); }}>
+                <Select mt={2} placeholder='Select tag' onChange={(e) => { handleTag(e.target.value); }}>
                     {
                         tags.map((tag, index) => {
                             if (!tagArr.includes(tag)) {

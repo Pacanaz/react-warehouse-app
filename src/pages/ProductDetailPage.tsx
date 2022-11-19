@@ -47,7 +47,6 @@ function ProductDetailPage() {
     quantityArr.push(qData.quantity)
   }
   const lastQuantityHistory = quantityArr.slice(-2)[0]
-  console.log(lastQuantityHistory)
   function getPercentageChange(oldNumber: number, newNumber: number) {
 
 
