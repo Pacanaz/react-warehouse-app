@@ -12,7 +12,7 @@ import {
   Legend,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-import { Box, Button, Flex, Menu, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Stat, StatArrow, StatGroup, StatHelpText, Table, TableContainer, Tbody, Td, Tr, useColorModeValue, useDisclosure } from "@chakra-ui/react"
+import { Box, Button, Flex, HStack, Menu, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalOverlay, Stat, StatArrow, StatGroup, StatHelpText, Table, TableContainer, Tag, Tbody, Td, Tr, useColorModeValue, useDisclosure } from "@chakra-ui/react"
 import DeleteButton from "../components/DeleteButton"
 import EditButton from "../components/EditButton"
 import { ArrowBackIcon } from '@chakra-ui/icons'
@@ -211,6 +211,20 @@ function ProductDetailPage() {
                           </StatHelpText>
                         </Stat></StatGroup>}
                     {currentProduct.quantity}</Td>
+                </Tr>
+                <Tr>
+                  <Td>Tags</Td>
+                  <Td isNumeric>
+                  <HStack float={'right'} spacing={2}>
+                    {currentProduct.tags.map((tag : string, index : number) => {
+                    
+                       return <Tag size={'md'} key={index} variant='solid' colorScheme={tag.toLocaleLowerCase()}>
+                          {tag}
+                        </Tag>
+                      
+                    })}
+                    </HStack>
+                    </Td>
                 </Tr>
               </Tbody>
             </Table>

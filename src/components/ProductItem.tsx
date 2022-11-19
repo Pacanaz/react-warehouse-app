@@ -11,31 +11,42 @@ interface productType {
   productName: string,
   quantity?: number,
   price?: number,
+  tags: string[]
 }
 
 
 
-function ProductItem( {products} : any) {
+function ProductItem({ products }: any) {
 
   const navigate = useNavigate()
- 
-  
+
+
   const hoverBg = useColorModeValue('teal.50', 'teal.900')
 
   return (
     <>
       {products.map((productItem: productType) =>
-        <Tr onClick={() => navigate(productItem.id)} key={productItem.id} fontSize={['xs', 'sm', 'md']}  _hover={{ background: hoverBg, cursor: 'pointer' }} >
+        <Tr onClick={() => navigate(productItem.id)} key={productItem.id} fontSize={['xs', 'sm', 'md']} _hover={{ background: hoverBg, cursor: 'pointer' }} >
           <Td maxWidth={'40vw'}>{productItem.productName}</Td>
           <Td>{productItem.quantity}</Td>
           <Td>{productItem.price}</Td>
-          <Td><Tag variant='solid' colorScheme='teal' size={['xs', 'sm', 'md']}>Green</Tag></Td>
+          <Td>
+
+            {productItem.tags.map((tag: string, index: number) => {
+
+              return <Tag m={'3px'} size={'md'} key={index} variant='solid' colorScheme={tag.toLocaleLowerCase()}>
+                {tag}
+              </Tag>
+
+            })}
+
+          </Td>
           <Td textAlign={'center'} onClick={(e) => { e.stopPropagation() }}>
             <Menu>
               <MenuButton
                 as={IconButton}
                 aria-label='Actions'
-                icon={<HamburgerIcon/>}
+                icon={<HamburgerIcon />}
                 variant='outline'
               />
               <MenuList fontSize={'md'}>

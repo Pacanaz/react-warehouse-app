@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react'
 
 
 
-function TagSelect() {
-
+function TagSelect({handleTagData ,currentTags} : any ) {
     
     const tags = ['Green', 'Red', 'Yellow', 'Blue']
-    const [tagArr, setTagArr]: any[] = useState([])
+    const [tagArr, setTagArr]: any[] = useState(currentTags || [])
+    const [tagDirty, setTagDirty] = useState(false)
+
     const handleTag = (value: any) => {
         setTagArr([...tagArr, value])
     }
@@ -17,16 +18,30 @@ function TagSelect() {
         setTagArr(filteredTagArr)
     }
 
+    const tagDirtyStatus = () => {
+        console.log('currenttags');
+        console.log(currentTags);
+        console.log('tagarr');
+        console.log(tagArr);
+
+        JSON.stringify(currentTags) === JSON.stringify(tagArr) ? setTagDirty(false) : setTagDirty(true)
+    }
+       
+
+    
+
     useEffect(() => {
-     console.log(tagArr);
-    }, [tagArr])
+
+        handleTagData(tagArr, tagDirty);
+        console.log(tagDirty);
+    }, [tagArr, handleTagData, tagDirty, setTagArr])
     
     return (
         <>
         <FormLabel ml={{base:'10px', sm:'0'}}>Tags</FormLabel>
             <HStack spacing={2}>
-
-                {tagArr.map((item : string, index : number) => {
+            {tagArr.length &&
+                tagArr.map((item : string, index : number) => {
                     
                   return  <Tag
                         size={'md'}
@@ -38,13 +53,14 @@ function TagSelect() {
                         <TagLabel>{item}</TagLabel>
                         <TagCloseButton onClick={() => {
                             removeTag(item);
+                            tagDirtyStatus();
                         }} />
                     </Tag>
                 })}
             </HStack>
 
             {tagArr.length !== tags.length &&
-                <Select mt={2} placeholder='Select tag' onChange={(e) => { handleTag(e.target.value) }}>
+                <Select mt={2} placeholder='Select tag' onChange={(e) => { handleTag(e.target.value); tagDirtyStatus(); }}>
                     {
                         tags.map((tag, index) => {
                             if (!tagArr.includes(tag)) {

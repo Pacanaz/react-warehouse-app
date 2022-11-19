@@ -3,12 +3,14 @@ import { useForm } from "react-hook-form"
 import { ErrorMessage } from "@hookform/error-message"
 import { Form, useNavigate, useParams } from "react-router-dom"
 import { useProductData } from "../context/ProductContext"
+import TagSelect from "./TagSelect"
+import { useState } from "react"
 
 
 
 function EditProductForm() {
   const { getProduct, editProduct } = useProductData()
-
+  
   let { id } = useParams()
 
   const currentProduct = getProduct(id)
@@ -27,6 +29,22 @@ function EditProductForm() {
       price: currentProduct.price
     },
   })
+// this aint working like it should, state is "one step" behind :(
+// state inside the TagSelect component is working fine, but when it gets transferred here
+// it's one step behind.
+
+  let tagArr : string[] = []
+  const handleTagData = (tagArrFromComp : any, isDirtyTagFromComp : any)  => {
+    tagArr = tagArrFromComp
+    setisDirtyTagState(isDirtyTagFromComp)
+  }
+  const [isDirtyTagState, setisDirtyTagState] = useState(false) 
+ 
+ 
+  
+  
+  
+
   function onSubmit(product: any) {
 
     const currDate = new Date().toLocaleString()
@@ -51,7 +69,12 @@ function EditProductForm() {
 
     }
 
-    isDirty && navigate(-1); editProduct(currentProduct)
+    if(currentProduct.tags !== tagArr){
+      currentProduct.tags = tagArr
+    }
+
+
+    (isDirty || isDirtyTagState) && navigate(-1); editProduct(currentProduct)
 
   }
 
@@ -91,8 +114,9 @@ function EditProductForm() {
           })}
         />
         <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="price" />
-        <Button mt={4} w={{ base: '90%', sm: 'inherit' }} mx={{ base: '5%', sm: 'inherit' }} colorScheme='teal' isLoading={isSubmitting} disabled={!isDirty} type='submit'>
-          {!isDirty ? <Tooltip hasArrow label="You didn't change anything!" aria-label='A tooltip'>
+        <TagSelect handleTagData={handleTagData} currentTags={currentProduct.tags} />
+        <Button mt={4} w={{ base: '90%', sm: 'inherit' }} mx={{ base: '5%', sm: 'inherit' }} colorScheme='teal' isLoading={isSubmitting} disabled={!isDirty && !isDirtyTagState} type='submit'>
+          {!isDirty && !isDirtyTagState ? <Tooltip hasArrow label="You didn't change anything!" aria-label='A tooltip'>
             Edit 📦
           </Tooltip> : 'Edit 📦'}
         </Button>

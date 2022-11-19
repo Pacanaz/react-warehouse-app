@@ -19,10 +19,14 @@ function NewProductForm() {
     criteriaMode: "all"
   })
 
+  let tagArr : string[] = [];
 
+  const handleTagData = (tagArrFromComp : any) => {
+    tagArr = tagArrFromComp
+  }
 
   function onSubmit(product: any) {
-
+    
     product.id = uuidv4()
 
     product.history = {
@@ -39,6 +43,10 @@ function NewProductForm() {
       createdAt: currDate,
       quantity: product.quantity,
     })
+
+    product.tags = tagArr
+
+   
 
 
     addProduct(product)
@@ -83,7 +91,7 @@ function NewProductForm() {
           })}
         />
   <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="price" />
-          <TagSelect/>
+          <TagSelect handleTagData={handleTagData} />
         <Button mt={4} w={{base:'90%', sm: 'inherit'}} mx={{base:'5%', sm: 'inherit'}} colorScheme='teal' isLoading={isSubmitting} type='submit'>
           Add to 📦
         </Button>
