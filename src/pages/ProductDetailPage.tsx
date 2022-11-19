@@ -181,6 +181,10 @@ function ProductDetailPage() {
                   <Td isNumeric maxWidth={'30vw'}>{currentProduct.productName}</Td>
                 </Tr>
                 <Tr>
+                  <Td>Product ID</Td>
+                  <Td isNumeric maxWidth={'30vw'}>{currentProduct.id}</Td>
+                </Tr>
+                <Tr>
                   <Td>Price</Td>
                   <Td isNumeric>
                     {lastPriceHistory && (priceStat.value !== '100%' && priceStat.value !== 'Infinity%' && priceStat.value !== '0%') &&

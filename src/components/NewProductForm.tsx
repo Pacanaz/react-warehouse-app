@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import { Form, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'
 import { useProductData } from "../context/ProductContext"
+import TagSelect from "./TagSelect"
 
 
 function NewProductForm() {
@@ -17,6 +18,8 @@ function NewProductForm() {
   } = useForm<any>({
     criteriaMode: "all"
   })
+
+
 
   function onSubmit(product: any) {
 
@@ -80,6 +83,7 @@ function NewProductForm() {
           })}
         />
   <ErrorMessage as={<Text fontSize={'sm'} color={'red'} />} errors={errors} name="price" />
+          <TagSelect/>
         <Button mt={4} w={{base:'90%', sm: 'inherit'}} mx={{base:'5%', sm: 'inherit'}} colorScheme='teal' isLoading={isSubmitting} type='submit'>
           Add to 📦
         </Button>
