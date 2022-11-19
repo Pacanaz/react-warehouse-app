@@ -24,7 +24,7 @@ function TagSelect({handleTagData ,currentTags} : any ) {
         console.log('tagarr');
         console.log(tagArr);
 
-        JSON.stringify(currentTags) === JSON.stringify(tagArr) ? setTagDirty(false) : setTagDirty(true)
+       
     }
        
 
@@ -32,9 +32,9 @@ function TagSelect({handleTagData ,currentTags} : any ) {
 
     useEffect(() => {
 
+        JSON.stringify(currentTags) === JSON.stringify(tagArr) ? setTagDirty(false) : setTagDirty(true)
         handleTagData(tagArr, tagDirty);
-        console.log(tagDirty);
-    }, [tagArr, handleTagData, tagDirty, setTagArr])
+    }, [tagArr, handleTagData, tagDirty, setTagArr, currentTags])
     
     return (
         <>

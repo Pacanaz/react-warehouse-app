@@ -29,9 +29,6 @@ function EditProductForm() {
       price: currentProduct.price
     },
   })
-// this aint working like it should, state is "one step" behind :(
-// state inside the TagSelect component is working fine, but when it gets transferred here
-// it's one step behind.
 
   let tagArr : string[] = []
   const handleTagData = (tagArrFromComp : any, isDirtyTagFromComp : any)  => {
